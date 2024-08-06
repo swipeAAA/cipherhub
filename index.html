@@ -95,6 +95,17 @@
             opacity: 1;
             transition: opacity 1s ease-in;
         }
+        .image-container {
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0; /* Hide initially */
+            transition: opacity 1s ease-in;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid white;
+        }
     </style>
 </head>
 <body>
@@ -153,39 +164,38 @@
                                                                           %      # :.      #@@@@@@@@@  =@@=@@@@@    @:*##                                                                   
                                                                          @ @:  @@#@  -   #@@@@@@*@@@  %@@+:@-@@@    @@ ##                                                                   
                                                                        -=:@ #@@@@@  -  :-@@@@@@%@@@ .@@@:+:+@@@%    +@  #                                                                   
-                                                                      =+@@@@@@@@.   =.- @@@+@@@@@@@#@@@%  @ %#@@     @@                                                                     
-                                                                    #*#@@@% @@ *  %##+=@@@-@@@%#@@+:@=@    - @@@      @.                                                                    
-                                                                   * -%=@ .@ *  %@:@%@  @+@@+#% @+.+ #      *@%@%     @@                                                                    
-                                                                     =   *  +..@   @ .  =@ :   =              .@@   @@* %                                                                   
-                                                                    *      *  * -   +  .@@  -==  .             +@=  +@ =.                                                                   
-                                                                  # . @- *   .-@      :@@.  ==@                 +.   =. @                                                                   
-                                                                 #  .@      =*@       -: =   =. @               @.@    @@                                                                   
-                                                                #@ = @@@  .@    %          + - -@              *  %@=  #*                                                                   
-                                                              .-  + @@  @@@ .                * @. @             +  @@*   @                                                                  
-                                                               .@*@%@@ .    #                  =     -           %@@@@+  @                                                                  
-                                                             ##   %     @#   @                 .   =            %   =@@  @@                                                                 
-                                                           -@ @@-@@ @ +   @ .  =              @+ @=            @#   @@@. =@                                                                 
-                                                         #*@%*@ @@  : @@@@:+ *           .     % %@@   @        @  @@  -:@@                                                                 
-                                                      %#*   #@@@%@@  =@+*@+  @         - =     = @@@ - -       %@%#@  @#== @                                                                
-                                                   @@   @  .@+@-@     #  =@@ *    .   = @        =.@@          @@@-@@=@@@   @@@                                                             
-                                                   @@@@@# =% @+@ =@  -@   @@ =       @ @  @+ -    : @@        =@@@@@@@   @@@@*@@%                                                           
-                                                   =@@+@    @@##@%%   @-  @.@@.     :@@.    % +   = @@@       @@@@%@    @=@@@@ @@                                                           
-                                                    @@@@=@@@@@@* =@@.@@  #  @@+     = @     .+%    =:@@=      @@@@@#  .@@@%=@@@*@                                                           
-                                                   .@@# @@@@ . @@@@*@@ -@#@@ @      @@     @  .@    @@-@@    =@@@@@@ %@@.@@@@@@ @@                                                          
-                                                    =@@@@@@= @@@@@%@=@@@ @@@@  % @@@@  @%  @@ - @* =@%@@%@@@@@@@@@ @ @@%%@@@%@@  @                                                          
-                                                         
-
+                                                                      =+@@@@@@@@.   =.- @@@+@@@@@@@#@@@%  @@@@     @:                                                                        
+                                                                      @@@@@@@@@: @:   *@@@* @ @@@@@@@%  @@@@      .@                                                                        
+                                                                    %@@@@*@@@ =@@   -@@@@ -   @@@-@@%@@@@@        .                                                                         
+                                                                    *@@:@@@@@ @@  *@@@@%-@#@@@%@@@ @@@+@                                                                                    
+                                                                    @@@+@%@@ @@:  %@@@@:%@@@@@@@@ =@@@%                                                                                      
+                                                                    @@@@@@ @@:  %@@@@@%@@@@@@@@%  @@@@                                                                                       
+                                                                    @@@%@@*@@  %@@*@@%%@@%@@@: %@@                                                                                          
+                                                                    @@+@@@ @@ -@@@-@@ -@@.@@@  @@                                                                                           
+                                                                    @@.@@ @@ .@@@@@@: @@@+@@+%@@@                                                                                            
+                                                                    @@@@@ @@-@@@@@@   @@@#@@:@@@                                                                                             
+                                                                    @@@@+ @%@@@@@@    @@%@@%@@                                                                                              
+                                                                    @@@  @@@@@@@@    -@@#@@@                                                                                                
+                                                                    @@@*@@@@@@@      @@%@@                                                                                                  
+                                                                    @@=@@@@@@      #@ @@                                                                                                    
+                                                                    @@@@@@@                                                                                                                 
+                                                                    =@@@                                                                                                                     
+                                                                    @                                                                                                                                        
     </div>
     <div class="terminal" id="terminal">
         <div class="output">
             C:\> Taken down because I don't like doxxing ppl
         </div>
     </div>
+    <div class="image-container" id="imageContainer">
+        <img src="https://us-east-1.tixte.net/uploads/swipevault.tixte.co/Screenshot.png" alt="Image">
+    </div>
 
     <script>
         const welcomeMessage = document.getElementById('welcomeMessage');
         const logo = document.getElementById('logo');
         const terminal = document.getElementById('terminal');
+        const imageContainer = document.getElementById('imageContainer');
 
         setTimeout(() => {
             welcomeMessage.classList.add('fade-out');
@@ -193,6 +203,7 @@
                 welcomeMessage.style.display = 'none';
                 logo.style.opacity = 1;
                 terminal.style.opacity = 1;
+                imageContainer.style.opacity = 1; // Fade in the image container
             }, 1000); // Adjust the timing as needed
         }, 3000); // Adjust the timing as needed
     </script>
