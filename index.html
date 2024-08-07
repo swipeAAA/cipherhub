@@ -19,7 +19,7 @@
         }
         .logo {
             white-space: pre;
-            font-size: 0.3rem; /* Adjusted to make the logo slightly smaller */
+            font-size: 0.4rem; /* Adjusted to make the logo slightly smaller */
             color: white;
             margin: 20px 0;
             z-index: 10;
@@ -95,17 +95,6 @@
             opacity: 1;
             transition: opacity 1s ease-in;
         }
-        .image-container {
-            margin-top: 20px;
-            text-align: center;
-            opacity: 0; /* Hide initially */
-            transition: opacity 1s ease-in;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid white;
-        }
     </style>
 </head>
 <body>
@@ -143,8 +132,9 @@
                                                                    ############=%@-#*# := +@@@       #@      @%*##################                                                          
                                                                      ##########+@@=+@#   @*%@@@#   -@##+=+@@*@=+#################                                                           
                                                                 %##############=@@+.@%  @# @=*@@@@%%+@%=@@@@@ %+#####################                                                       
-                                                           ####################=@@=.%@#:+.%   @@=@@+@%@@@@@*   - +#########################*                                                 
-                                                       ########################=@@-:=@=*.+=@ @+@+@@@%@@@*-@    #+-###########    ###################                                        
+                                                           ####################=@@* @@.%.+=..- @@-@@*@@*@@@@+ -#=#########################*                                                 
+                                                       ########################=@@=.%@#:+.%   @@=@@+@%@@@@@*   - +#############################                                             
+                                                 ###################    #######=@@-:=@=*.+=@ @+@+@@@%@@@*-@    #+-###########    ###################                                        
                                                                       ########%@@@= @@@#:#@#++@@@@@@@@@. -  .  @@% :###########                                                             
                                                                    *##########%@@@# @@@@@@@:@@@@@@@@@@*.-  :   @@#@@:#############                                                          
                                                                  ##############@@@ @@@@@@@%@@@@@@@@@@*@    #= +@####################                                                        
@@ -163,32 +153,85 @@
                                                                            +@     .  #      =@@@@%@@@+. *:@=@%@#   @@###                                                                    
                                                                           %      # :.      #@@@@@@@@@  =@@=@@@@@    @:*##                                                                   
                                                                          @ @:  @@#@  -   #@@@@@@*@@@  %@@+:@-@@@    @@ ##                                                                   
-
+                                                                       -=:@ #@@@@@  -  :-@@@@@@%@@@ .@@@:+:+@@@%    +@  #                                                                   
+                                                                      =+@@@@@@@@.   =.- @@@+@@@@@@@#@@@%  @ %#@@     @@                                                                     
+                                                                    #*#@@@% @@ *  %##+=@@@-@@@%#@@+:@=@    - @@@      @.                                                                    
+                                                                   * -%=@ .@ *  %@:@%@  @+@@+#% @+.+ #      *@%@%     @@                                                                    
+                                                                     =   *  +..@=+%@=:.%.+@ *@ %@  :   :  : @#%@       @                                                                        
     </div>
     <div class="terminal" id="terminal">
-        <div class="output">
-            C:\> Taken down because I don't like monkey ppl
+        <div class="output" id="output">
+            <div>prompt "help" for information</div>
+        </div>
+        <div class="input-line">
+            <span class="prompt" id="prompt">C:\></span>
+            <input type="text" id="input" autofocus>
         </div>
     </div>
-    <div class="image-container" id="imageContainer">
-        <img src="https://us-east-1.tixte.net/uploads/swipevault.tixte.co/Screenshot.png" alt="Image">
-    </div>
-
     <script>
-        const welcomeMessage = document.getElementById('welcomeMessage');
-        const logo = document.getElementById('logo');
-        const terminal = document.getElementById('terminal');
-        const imageContainer = document.getElementById('imageContainer');
+        // Fade out the welcome message after 3 seconds and show terminal and logo
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('welcomeMessage').classList.add('fade-out');
+                document.getElementById('logo').classList.add('fade-in');
+                document.getElementById('terminal').classList.add('fade-in');
+            }, 3000);
+        });
 
-        setTimeout(() => {
-            welcomeMessage.classList.add('fade-out');
-            setTimeout(() => {
-                welcomeMessage.style.display = 'none';
-                logo.style.opacity = 1;
-                terminal.style.opacity = 1;
-                imageContainer.style.opacity = 1; // Fade in the image container
-            }, 1000); // Adjust the timing as needed
-        }, 3000); // Adjust the timing as needed
+        const people = [
+            { name: 'islamaphobe', link: 'https://hastebin.skyra.pw/raw/ehurogavex' },
+            { name: 'gooseworx', link: 'https://doxbin.org/upload/GooseworxTranny/raw' },
+            { name: 'tranny i didnt like', link: 'https://hastebin.skyra.pw/raw/ewawaqudaq' },
+            { name: 'Rebecca Korin', link: 'https://hastebin.skyra.pw/raw/gociyopuku' }
+        ];
+
+        const namesMessage = "Type in any of these names for their link.";
+        const inputField = document.getElementById('input');
+        const outputDiv = document.getElementById('output');
+        const promptSpan = document.getElementById('prompt');
+
+        inputField.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                let input = event.target.value.trim();
+
+                if (input.toLowerCase() === 'help') {
+                    outputDiv.innerHTML = ''; // Clear previous output
+                    people.forEach(person => {
+                        const nameLine = document.createElement('div');
+                        nameLine.textContent = person.name;
+                        outputDiv.appendChild(nameLine);
+                    });
+                    const messageLine = document.createElement('div');
+                    messageLine.textContent = namesMessage;
+                    outputDiv.appendChild(messageLine);
+                    promptSpan.textContent = 'Victim:\\>';
+                } else if (input.toLowerCase() === 'clear') {
+                    window.location.reload();
+                } else {
+                    const person = people.find(p => p.name.toLowerCase() === input.toLowerCase());
+                    if (person) {
+                        outputDiv.innerHTML = ''; // Clear previous output
+                        const linkLine = document.createElement('div');
+                        linkLine.innerHTML = `Link: <a href="${person.link}" target="_blank">${person.link}</a>`;
+                        outputDiv.appendChild(linkLine);
+                    } else {
+                        const newLine = document.createElement('div');
+                        newLine.textContent = `${promptSpan.textContent} ${input}`;
+                        outputDiv.appendChild(newLine);
+                    }
+                }
+                event.target.value = '';
+            }
+        });
+
+        document.addEventListener('mousemove', function(event) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = `${event.pageX}px`;
+            sparkle.style.top = `${event.pageY}px`;
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        });
     </script>
 </body>
 </html>
