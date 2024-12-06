@@ -3,235 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Command Prompt</title>
+    <title>Spotify Embed</title>
     <style>
         body {
-            background-color: black;
-            color: white;
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
+            background-color: #2e2e2e;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: center; /* Centered vertically */
+            height: 100vh;
+            margin: 0;
         }
-        .logo {
-            white-space: pre;
-            font-size: 0.3rem; /* Adjusted to make the logo slightly smaller */
-            color: white;
-            margin: 20px 0;
-            z-index: 10;
-            text-align: center;
-            opacity: 0; /* Hide initially */
-        }
-        .terminal {
-            position: relative;
+        .embed-container {
             width: 80%;
             max-width: 800px;
-            padding: 20px;
-            background-color: black;
-            border: 1px solid white;
-            z-index: 1;
-            box-sizing: border-box;
-            opacity: 0; /* Hide initially */
-        }
-        .output {
-            margin-bottom: 10px;
-        }
-        .input-line {
-            display: flex;
-        }
-        .prompt {
-            margin-right: 10px;
-        }
-        input {
-            background-color: black;
-            color: white;
-            border: none;
-            outline: none;
-            width: 100%;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-        }
-        a:hover {
-            color: blue;
-        }
-        .sparkle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            animation: fall 1s linear forwards;
-        }
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
-        .welcome-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            color: white;
-            z-index: 20;
-            opacity: 1;
-            transition: opacity 1s ease-out;
-        }
-        .fade-out {
-            opacity: 0;
-        }
-        .fade-in {
-            opacity: 1;
-            transition: opacity 1s ease-in;
         }
     </style>
 </head>
 <body>
-    <div class="welcome-message" id="welcomeMessage">
-        Welcome to Cipherbin
+    <div class="embed-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SmuEAxOzY8s9g15afhKRk?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
-    <div class="logo" id="logo">
-                                                                                  #              ##             #                                                                          
-                                                                                   ##        --  %##             ##                                                                         
-                                                                                    --@@@@@@@@ @=###            ##                                                                          
-                                                                                %@@@@@@@%+*@@@ =*###          %###                                                                          
-                                                                     ##     @@@@*   :@@@@@@@@@@@*###:         ###              #                                                            
-                                                                      #%@+.:=+@@@@%#*#** -@@+@@@@#=:#@@@@@.  ####            ##                                                             
-                                                                 @@@#  #%+           ####    :@@@@@@@%@@@@@@@*:*#          ####                                                             
-                                                           .*@@@#- =    ####         #####   @*@@@@# @@@@:=@@@@#         #####                                                              
-                                                          @@@@%          #####       ######@@@@*@-#*==@@.=@@@@@@@+      ####                                                                
-                                                        #@@:             ######      ####%@@@@@#@#@.- @@@@@@@@@@@@@   ######               %                                                
-                                                       .= =##             #######    *##@@ @@@@@.@@ : @@@@*#%@+@@:@#.######             ###                                                 
-                                                            #####          ########   #@%*@@%@ @%*#@  +@@@ @%%   @.@#+####          #####                                                   
-                                                              ######        %#######% -@%%@@% :@@.@@  *@@-:@@.   *@##--##        ######                                                     
-                                                                #######      ########%@%@@%  :% -@+@%+=.% @=      @@%##*      #######                                                       
-                                                                 *########    #######@@@@# .-   =@*@-#=  +=  *=. :@@%##    #########                                                        
-                                                                   ########### #####%@+@@#@@     @=@@@-  + .=@@@@%%### %##########                                                          
-                                                                     #############%@#@@  @@@+    -@ @%@=#  .@@@@%###############                                                            
-                                                   #######%            ###########::@.    @@@@    %@ @%#* -@@@%################            #######                                          
-                                                      ###########*       #########@%     *@@@@@%   @.@@+-+@@#################       ###########                                             
-                                                          ################%######@@*-@@@@@@@%@@@@   #-+%-%#################################                                                 
-                                                             ##################%@@@= @@@@@%@@% % @  #+@@%###############################                                                    
-                                                                ###############%@@* -@@@#@   @@   +  @.@@############################                                                       
-                                                                   ############%@@ .@+*@@@#+   =      #.%%########################                                                          
-                                                                       ########%@. :    @@  =      =    @@@###################                                                              
-                                                 ##############################@@@    .@@@@:             #%@%######################################*                                        
-                                                  #############################%@+ = :@-@@@@@          .@@@@#@#####################################                                         
-                                                          #####################@@@ * @=*:@@@@::       ==    @@%############################%                                                
-                                                                   ############=%@-#*# := +@@@       #@      @%*##################                                                          
-                                                                     ##########+@@=+@#   @*%@@@#   -@##+=+@@*@=+#################                                                           
-                                                                %##############=@@+.@%  @# @=*@@@@%%+@%=@@@@@ %+#####################                                                       
-                                                           ####################=@@* @@.%.+=..- @@-@@*@@*@@@@+ -#=#########################*                                                 
-                                                       ########################=@@=.%@#:+.%   @@=@@+@%@@@@@*   - +#############################                                             
-                                                 ###################    #######=@@-:=@=*.+=@ @+@+@@@%@@@*-@    #+-###########    ###################                                        
-                                                                      ########%@@@= @@@#:#@#++@@@@@@@@@. -  .  @@% :###########                                                             
-                                                                   *##########%@@@# @@@@@@@:@@@@@@@@@@*.-  :   @@#@@:#############                                                          
-                                                                 ##############@@@ @@@@@@@%@@@@@@@@@@*@    #= +@####################                                                        
-                                                               ############ ##%@@++@@@@@@@@@@@@@-#@@@@   =@*.@ =######### #############                                                     
-                                                             #########%    ###@@@+@@@@@@@@ @@@@ =@@=    @@@@-   #*########    %##########                                                   
-                                                          ########        ####@@@@@@@@@@@@@@@+*@@=    .@@@@@@@:    ########*        %######                                                 
-                                                       %######           #####@@@@@@%@@@@%#**@@     =@@@@@@@@%    @@#########           ######                                              
-                                                     *##               ######@@@@@@@@@@@##+-+     @:@@@@@=+@@@*#@%@=@ ########               ###                                            
-                                                                      ######@@@@@@#@#%#*-+.@@  #.@ @@@@%-+@@= @@+%:@:%  #######                                                             
-                                                                     ######@@@@@@@@@#=+* %@  @+:= @%#***#-#@% @@@   #     #######                                                           
-                                                                   ######  @@@@@@@#*=*#.    =.- . -.=#%@@*@# #@#@@@: *      ######                                                          
-                                                                  ####     @@+*@=-@#@@    ..        @@@@@@* -*:* @@##@         ####                                                         
-                                                                ####       @@= *@:*@              @@@@@@@= .+.#*-%@###           ####                                                       
-                                                                ##       -@@. @-.=#     +     -#@@@@@@@@. +=*=-@  %%###            %##                                                      
-                                                                          + *@      :        *%@@@@@@@@: *.%.@:@   %%##                                                                     
-                                                                           +@     .  #      =@@@@%@@@+. *:@=@%@#   @@###                                                                    
-                                                                          %      # :.      #@@@@@@@@@  =@@=@@@@@    @:*##                                                                   
-                                                                         @ @:  @@#@  -   #@@@@@@*@@@  %@@+:@-@@@    @@ ##                                                                   
-                                                                       -=:@ #@@@@@  -  :-@@@@@@%@@@ .@@@:+:+@@@%    +@  #                                                                   
-                                                                      =+@@@@@@@@.   =.- @@@+@@@@@@@#@@@%  @ %#@@     @@                                                                     
-                                                                    #*#@@@% @@ *  %##+=@@@-@@@%#@@+:@=@    - @@@      @.                                                                    
-                                                                   * -%=@ .@ *  %@:@%@  @+@@+#% @+.+ #      *@%@%     @@                                                                    
-                                                                     =   *  +..@=+%@=:.%.+@ *@ %@  :   :  : @#%@       @                                                                        
-    </div>
-    <div class="terminal" id="terminal">
-        <div class="output" id="output">
-            <div>prompt "help" for information</div>
-        </div>
-        <div class="input-line">
-            <span class="prompt" id="prompt">C:\></span>
-            <input type="text" id="input" autofocus>
-        </div>
-    </div>
-    <script>
-        // Fade out the welcome message after 3 seconds and show terminal and logo
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('welcomeMessage').classList.add('fade-out');
-                document.getElementById('logo').classList.add('fade-in');
-                document.getElementById('terminal').classList.add('fade-in');
-            }, 3000);
-        });
-
-        const people = [
-            { name: 'islamaphobe', link: 'https://hastebin.skyra.pw/raw/ehurogavex' },
-            { name: 'gooseworx', link: 'https://doxbin.org/upload/GooseworxTranny/raw' },
-            { name: 'tranny i didnt like', link: 'https://hastebin.skyra.pw/raw/ewawaqudaq' },
-            { name: 'rebecca korin', link: 'https://hastebin.skyra.pw/raw/gociyopuku' }
-        ];
-
-        const namesMessage = "Type in any of these names for their link.";
-        const inputField = document.getElementById('input');
-        const outputDiv = document.getElementById('output');
-        const promptSpan = document.getElementById('prompt');
-
-        inputField.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                let input = event.target.value.trim();
-
-                if (input.toLowerCase() === 'help') {
-                    outputDiv.innerHTML = ''; // Clear previous output
-                    people.forEach(person => {
-                        const nameLine = document.createElement('div');
-                        nameLine.textContent = person.name;
-                        outputDiv.appendChild(nameLine);
-                    });
-                    const messageLine = document.createElement('div');
-                    messageLine.textContent = namesMessage;
-                    outputDiv.appendChild(messageLine);
-                    promptSpan.textContent = 'Victim:\\>';
-                } else if (input.toLowerCase() === 'clear') {
-                    window.location.reload();
-                } else {
-                    const person = people.find(p => p.name.toLowerCase() === input.toLowerCase());
-                    if (person) {
-                        outputDiv.innerHTML = ''; // Clear previous output
-                        const linkLine = document.createElement('div');
-                        linkLine.innerHTML = `Link: <a href="${person.link}" target="_blank">${person.link}</a>`;
-                        outputDiv.appendChild(linkLine);
-                    } else {
-                        const newLine = document.createElement('div');
-                        newLine.textContent = `${promptSpan.textContent} ${input}`;
-                        outputDiv.appendChild(newLine);
-                    }
-                }
-                event.target.value = '';
-            }
-        });
-
-        document.addEventListener('mousemove', function(event) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = `${event.pageX}px`;
-            sparkle.style.top = `${event.pageY}px`;
-            document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        });
-    </script>
 </body>
 </html>
