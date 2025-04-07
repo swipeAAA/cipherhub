@@ -3,7 +3,7 @@ paypal.Buttons({
     return actions.order.create({
       purchase_units: [{
         amount: {
-          value: '10.00' // USD
+          value: '10.00'
         }
       }]
     });
@@ -11,11 +11,10 @@ paypal.Buttons({
   onApprove: function (data, actions) {
     return actions.order.capture().then(function (details) {
       alert('Transaction completed by ' + details.payer.name.given_name);
-      // Optionally redirect or show success message
     });
   },
   onError: function (err) {
     console.error(err);
-    alert('Something went wrong during the transaction.');
+    alert('An error occurred. Please try again.');
   }
 }).render('#paypal-button-container');
