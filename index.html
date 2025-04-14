@@ -2,29 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PayPal Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Train with Me</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    html, body {
+      scroll-behavior: smooth;
       margin: 0;
-      background: #f5f5f5;
+      padding: 0;
     }
-    #paypal-button-container {
-      text-align: center;
+    .fade-in {
+      animation: fadeIn 1.2s ease-in forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .slide-up {
+      transform: translateY(20px);
+      animation: slideUp 1.2s ease-out forwards;
+      opacity: 0;
+    }
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .blurred-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px) brightness(0.5);
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+    section {
+      transition: background-image 1s ease-in-out;
+    }
+    .gradient-fade {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 1) 100%);
     }
   </style>
 </head>
-<body>
-  <div id="paypal-button-container"></div>
+<body class="bg-black text-white font-sans">
 
-  <!-- PayPal SDK with your sandbox Client ID -->
-  <script src="https://www.paypal.com/sdk/js?client-id=EIsY47qQSWWQG5E-SAM_NZTAICxc0lfOES1FFoqvzM0TQiZ-ba3G1cjhCKcCsv7DS4yarA7ovG1QvoXe&currency=USD"></script>
+  <!-- Hero Section -->
+  <section class="relative flex items-center justify-center text-center overflow-hidden min-h-screen">
+    <div class="absolute inset-0 blurred-bg" style="background-image: url('https://images.unsplash.com/photo-1637666062717-1c6bcfa4a4df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
+    <div class="relative z-10 px-6 max-w-4xl fade-in">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-left">
+        <span class="text-white">THE ONLY</span><br>
+        <span class="text-yellow-400">IMPOSSIBLE</span> <span class="text-white">JOURNEY IS</span><br>
+        <span class="text-white">THE ONE YOU</span> <span class="text-yellow-400">NEVER BEGIN.</span>
+      </h1>
+      <a href="#plans" class="inline-block mt-6 bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-6 py-3 rounded transition-all duration-300">BEGIN YOUR JOURNEY</a>
+    </div>
+  </section>
 
-  <!-- Your app logic -->
-  <script src="app.js"></script>
+  <!-- Plans Section -->
+  <section id="plans" class="relative flex items-center justify-center text-center overflow-hidden min-h-screen">
+    <div class="absolute inset-0 gradient-fade" style="background-image: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-80 z-0"></div>
+    <div class="relative z-10 py-20 w-full">
+      <h2 class="text-4xl font-bold text-white mb-10 slide-up">Choose Your Plan</h2>
+      <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto px-6">
+
+        <!-- Plan 1 -->
+        <div class="bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-800 transition transform hover:scale-105 duration-300 slide-up">
+          <h3 class="text-2xl font-semibold mb-3">Workout Guidance</h3>
+          <p class="text-gray-400 mb-4">Personalized plans delivered via WhatsApp. Stay consistent, stay moving.</p>
+          <p class="text-yellow-400 text-xl font-bold mb-6">₹3,000 / 3 Months</p>
+          <a href="https://wa.me/YOURNUMBER" class="bg-yellow-400 hover:bg-yellow-300 text-black px-5 py-3 rounded-xl font-medium transition">Message to Join</a>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-800 transition transform hover:scale-105 duration-300 slide-up">
+          <h3 class="text-2xl font-semibold mb-3">Video Coaching + Diet</h3>
+          <p class="text-gray-400 mb-4">Live video training with custom diet support. Total accountability.</p>
+          <p class="text-pink-400 text-xl font-bold mb-6">₹5,000 / Month</p>
+          <a href="https://wa.me/YOURNUMBER" class="bg-pink-500 hover:bg-pink-400 text-white px-5 py-3 rounded-xl font-medium transition">Start Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
