@@ -38,6 +38,8 @@
       inset: 0;
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
       filter: blur(10px) brightness(0.5);
       transition: opacity 1s ease-in-out;
       z-index: 0;
@@ -45,51 +47,55 @@
     section {
       transition: background-image 1s ease-in-out;
     }
-    .gradient-fade {
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 1) 100%);
-    }
   </style>
 </head>
 <body class="bg-black text-white font-sans">
 
   <!-- Hero Section -->
   <section class="relative flex items-center justify-center text-center overflow-hidden min-h-screen">
-    <div class="absolute inset-0 blurred-bg" style="background-image: url('https://images.unsplash.com/photo-1637666062717-1c6bcfa4a4df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+    <div class="absolute inset-0 blurred-bg" style="background-image: url('https://images.unsplash.com/photo-1637666062717-1c6bcfa4a4df?q=80&w=2070&auto=format&fit=crop');"></div>
     <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
-    <div class="relative z-10 px-6 max-w-4xl fade-in">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-left">
+    <div class="relative z-10 px-4 sm:px-6 text-center sm:text-left max-w-4xl fade-in">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
         <span class="text-white">THE ONLY</span><br>
         <span class="text-yellow-400">IMPOSSIBLE</span> <span class="text-white">JOURNEY IS</span><br>
         <span class="text-white">THE ONE YOU</span> <span class="text-yellow-400">NEVER BEGIN.</span>
       </h1>
-      <a href="#plans" class="inline-block mt-6 bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-6 py-3 rounded transition-all duration-300">BEGIN YOUR JOURNEY</a>
+      <a href="#plans" class="inline-block mt-6 bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base rounded transition-all duration-300" aria-label="Scroll to plans section">BEGIN YOUR JOURNEY</a>
     </div>
   </section>
 
   <!-- Plans Section -->
   <section id="plans" class="relative flex items-center justify-center text-center overflow-hidden min-h-screen">
-    <div class="absolute inset-0 gradient-fade" style="background-image: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+    <div class="absolute inset-0 blurred-bg" style="background-image: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop');"></div>
     <div class="absolute inset-0 bg-black bg-opacity-80 z-0"></div>
-    <div class="relative z-10 py-20 w-full">
-      <h2 class="text-4xl font-bold text-white mb-10 slide-up">Choose Your Plan</h2>
-      <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto px-6">
+    <div class="relative z-10 py-16 sm:py-20 w-full px-4 sm:px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 slide-up">Choose Your Plan</h2>
+      <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
 
         <!-- Plan 1 -->
-        <div class="bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-800 transition transform hover:scale-105 duration-300 slide-up">
+        <div class="bg-gray-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-800 transition transform hover:scale-105 duration-300 slide-up">
           <h3 class="text-2xl font-semibold mb-3">Workout Guidance</h3>
           <p class="text-gray-400 mb-4">Personalized plans delivered via WhatsApp. Stay consistent, stay moving.</p>
           <p class="text-yellow-400 text-xl font-bold mb-6">₹3,000 / 3 Months</p>
-          <a href="https://wa.me/YOURNUMBER" class="bg-yellow-400 hover:bg-yellow-300 text-black px-5 py-3 rounded-xl font-medium transition">Start Now</a>
+          <a href="https://wa.me/918555882302" class="bg-yellow-400 hover:bg-yellow-300 text-black px-5 py-3 rounded-xl font-medium transition" aria-label="Start Workout Guidance plan via WhatsApp">Start Now</a>
         </div>
 
         <!-- Plan 2 -->
-        <div class="bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-800 transition transform hover:scale-105 duration-300 slide-up">
+        <div class="bg-gray-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-800 transition transform hover:scale-105 duration-300 slide-up">
           <h3 class="text-2xl font-semibold mb-3">Video Coaching + Diet</h3>
-          <p class="text-gray-400 mb-4">Live video training with custom diet support. Total accountability.</p>
+          <p class="text-gray-400 mb-4">Live video training with Me + custom diet support.</p>
           <p class="text-pink-400 text-xl font-bold mb-6">₹5,000 / Month</p>
-          <a href="https://wa.me/YOURNUMBER" class="bg-pink-500 hover:bg-pink-400 text-white px-5 py-3 rounded-xl font-medium transition">Start Now</a>
+          <a href="https://wa.me/918555882302" class="bg-pink-500 hover:bg-pink-400 text-white px-5 py-3 rounded-xl font-medium transition" aria-label="Start Video Coaching plan via WhatsApp">Start Now</a>
         </div>
 
+      </div>
+
+      <!-- Instagram Button -->
+      <div class="mt-12 flex justify-center">
+        <a href="https://www.instagram.com/the_fitman3?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Visit my Instagram">
+          <img src="https://preview.redd.it/instagram-logo-v0-giqa7qk5zzue1.png?auto=webp&s=c1149ffd4af23e817b520058b3d2d41e04b2a977" alt="Instagram" class="w-10 h-10 sm:w-12 sm:h-12 hover:opacity-80 transition duration-300 cursor-pointer">
+        </a>
       </div>
     </div>
   </section>
